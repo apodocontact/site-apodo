@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Le parcours guidé — APODO</title><meta name="description" content="Racontez votre entreprise en sept temps avec le parcours guidé APODO."><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5d6e'/%3E%3Cpath d='M16 46 27 17h10l11 29h-9l-2-7H26l-2 7Zm13-15h6l-3-10Z' fill='white'/%3E%3C/svg%3E"><link rel="stylesheet" href="assets/style.css">
+  <style>
+    :root{--ink:#173139;--muted:#60737a;--teal:#0f5d6e;--green:#5b8f68;--paper:#fbfcfa;--soft:#edf5f3;--warm:#f4f0e7;--line:#dbe5e3;--white:#fff;--shadow:0 18px 48px rgba(22,55,62,.09);--radius:20px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink);line-height:1.58}
+    button,input,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1020px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(251,252,250,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{min-height:76px;display:flex;align-items:center;gap:18px}.brand{display:flex;align-items:center}.brand img{display:block;width:190px;max-height:58px;object-fit:contain;object-position:left center}.prototype{margin-left:auto;font-size:12px;color:var(--muted);font-weight:750}
+    .hero{padding:50px 0 31px;border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:11px}
+    h1{font-size:clamp(36px,5vw,57px);line-height:1.04;letter-spacing:-.04em;margin:0 0 16px}h1 span{color:var(--teal)}.lead{font-size:17px;color:#50656c;max-width:810px;margin:0}
+    .progressbar{height:7px;background:#dfe8e6;border-radius:10px;overflow:hidden;margin:24px 0 8px}.progressbar i{display:block;height:100%;background:var(--green);transition:.3s}
+    .progress-meta{display:flex;justify-content:space-between;gap:14px;font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.05em}
+    .jump{margin-top:17px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px}.jump summary{cursor:pointer;font-weight:800;color:var(--teal)}.jump-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.jump button{border:1px solid var(--line);background:#f8fbfa;color:#365057;border-radius:10px;padding:9px;text-align:left;font-size:12px}.jump button.current{background:var(--teal);border-color:var(--teal);color:#fff}
+    main{padding:51px 0 76px;background:var(--soft);min-height:650px}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}.substep{padding:7px 10px;border-radius:999px;background:#fff;color:var(--teal);font-size:12px;font-weight:800;border:1px solid var(--line);white-space:nowrap}
+    h2{font-size:clamp(29px,4vw,42px);line-height:1.13;letter-spacing:-.03em;margin:0 0 11px}.help{font-size:15px;color:var(--muted);max-width:800px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow);margin-top:18px}.main-card{border-top:4px solid var(--green)}
+    .action-guide{margin:18px 0;padding:18px;border-radius:16px;background:var(--warm);border:1px solid #dfd3be}.action-guide h3{margin:0 0 8px;font-size:20px}.action-guide p{margin:0 0 10px;color:#4b5f65}.action-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.action-step{background:#fff;border:1px solid #dfd3be;border-radius:12px;padding:11px;font-size:13px}.action-step b{display:block;color:var(--teal);margin-bottom:3px}.action-cue{margin:15px 0;padding:13px 15px;border-left:4px solid var(--green);background:#f5faf8;border-radius:0 12px 12px 0;color:#3f575d;font-size:14px}.action-cue b{color:var(--teal)}
+    .invite{font-size:clamp(23px,3.5vw,35px);font-weight:800;line-height:1.22;letter-spacing:-.025em;margin:0 0 12px}.answer{width:100%;min-height:185px;border:1px solid #cddad7;border-radius:16px;padding:18px;font-size:17px;resize:vertical;background:#fff;color:var(--ink)}.answer.small{min-height:112px;margin-top:14px}.answer:focus,input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,93,110,.08)}
+    .voice-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:13px 0 0}.mic{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--teal);background:#fff;color:var(--teal);border-radius:12px;padding:10px 14px;font-weight:800}.mic.listening{background:var(--teal);color:#fff}.privacy{font-size:12px;color:var(--muted);flex:1;min-width:240px}
+    details.memory{margin-top:18px;border:1px solid var(--line);border-radius:15px;background:#f8fbfa;padding:14px 16px}details.memory summary{cursor:pointer;color:var(--teal);font-weight:800}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.chip{padding:8px 11px;border-radius:999px;background:var(--soft);color:var(--teal);font-size:12px;font-weight:750}
+    .checks{display:grid;gap:17px;margin-top:22px}.check-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}.check-card h3{font-size:21px;margin:0 0 6px}.check-card p{margin:0;color:var(--muted)}.choice-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.choice{border:1px solid #b9cbc6;background:#fff;color:#3e555c;border-radius:11px;padding:9px 12px;font-size:13px;font-weight:750}.choice.selected{background:var(--teal);border-color:var(--teal);color:#fff}.addition{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.addition.open{display:block}.voice-direct{margin-top:14px}.addition.open+.voice-direct{display:none}
+    .company{margin-top:24px;background:var(--warm);border:1px solid #e2d8c6;border-radius:20px;padding:23px}.company h3{font-size:23px;margin:0 0 5px}.company-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:17px}.company-grid .wide{grid-column:1/-1}.company label{display:block;font-size:13px;font-weight:800;margin:0 0 6px}.company input,.company textarea{width:100%;border:1px solid #c8d5d0;border-radius:12px;padding:12px 13px;background:#fff}.company textarea{min-height:96px;resize:vertical}.company .optional{border-top:1px solid #d9cdb8;padding-top:17px;margin-top:4px}
+    .actions{display:flex;justify-content:space-between;gap:12px;margin-top:27px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:12px;background:var(--teal);border:1px solid var(--teal);color:#fff;font-weight:800}.btn.ghost{background:transparent;color:var(--teal)}
+    .coverage{padding:18px;border-radius:17px;background:#fff;border:1px solid var(--line);margin-bottom:20px}.coverage b{color:var(--teal)}.missing-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}.missing-link{border:1px solid #d5a779;background:#fff8ef;color:#744b20;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800}
+    .summary-group{margin-top:26px}.summary-group h3{font-size:24px;margin:0 0 11px}.summary{display:grid;grid-template-columns:1fr 1fr;gap:13px}.summary-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}.summary-item.wide{grid-column:1/-1}.summary-item small{display:block;color:var(--green);font-weight:850;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}.summary-item p{margin:0;white-space:pre-wrap}.empty{color:var(--muted);font-style:italic}.notice{padding:17px 18px;border:1px solid #bdd1cc;background:#fff;border-radius:16px;margin-top:20px;font-size:14px}.finish{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.final-actions{grid-template-columns:repeat(3,1fr)}.reset{display:block;margin:24px auto 0;border:0;background:none;color:var(--muted);font-size:12px;text-decoration:underline}
+    footer{padding:30px 0;background:#10252c;color:#b9c6c9;font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:760px){.wrap{width:min(100% - 26px,1020px)}.hero{padding-top:38px}.jump-grid{grid-template-columns:1fr 1fr}.panel-head{display:block}.substep{display:inline-flex;margin-top:8px}.card,.check-card,.company{padding:19px}.choice-row{display:grid}.choice{width:100%;text-align:left}.actions{flex-direction:column-reverse}.btn{width:100%}.company-grid,.summary,.finish,.final-actions,.action-steps{grid-template-columns:1fr}.company-grid .wide,.summary-item.wide{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="wrap nav">
+<a class="brand" href="index.html" aria-label="APODO, accueil"><img src="assets/apodo-logo-horizontal.png" alt="APODO — Révéler ce qui fait déjà sens"></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span><span class="sr-only">Ouvrir le menu</span></button>
+<nav class="menu" id="site-menu" aria-label="Navigation principale"><a class="active" href="methode.html">Le parcours guidé</a><a href="supports.html">Ce que vous recevez</a><a href="ressources.html">Ressources</a><a href="adhesion.html">Adhésion 2026</a><a class="btn mobile-cta" href="parcours.html">Commencer le parcours</a></nav>
+<a class="btn nav-cta" href="parcours.html">Commencer le parcours</a>
+</div></header>
+  <section class="hero"><div class="wrap">
+    <div class="eyebrow" id="heroEyebrow"></div><h1 id="heroTitle"></h1><p class="lead" id="heroLead"></p>
+    <div class="progressbar" id="progress" role="progressbar" aria-label="Progression dans le parcours" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="bar"></i></div><div class="progress-meta"><span id="momentCount"></span><span>Brouillon conservé sur cet appareil</span></div>
+    <details class="jump"><summary>Aller directement à un grand moment</summary><div class="jump-grid" id="jumpGrid"></div></details>
+  </div></section>
+  <main><div class="wrap" id="app"></div></main>
+  <footer class="footer"><div class="wrap">
+<div class="footer-grid"><div><strong>APODO</strong><p>Association pour l’Optimisation Durable des Organisations. Nous aidons les TPE-PME à révéler, structurer et valoriser leurs pratiques responsables.</p><a class="footer-mail" href="mailto:apodo.contact@gmail.com">apodo.contact@gmail.com</a></div>
+<div><strong>Votre parcours</strong><a href="methode.html">Le parcours guidé</a><a href="supports.html">Ce que vous recevez</a><a href="parcours.html">Commencer le parcours</a><a href="transmettre.html">Transmettre mes éléments</a><a href="adhesion.html">Adhérer à APODO</a></div>
+<div><strong>APODO et ressources</strong><a href="association.html">L’association APODO</a><a href="ressources.html">Ressources</a><a href="blog.html">Actualités et blog</a><a href="confidentialite.html">Confidentialité</a><a href="mentions-legales.html">Mentions légales</a></div></div>
+<div class="footer-bottom"><div>APODO — septembre 2026</div><div>Cotisation annuelle · Pas d’abonnement · Pas de renouvellement automatique</div></div>
+</div></footer>
+
+  <script>
+    const moments=[
+      {id:'valeur',title:'Ce qui fait la valeur de votre entreprise',short:'Votre valeur',lead:'Commençons par ce qui vous rend fier. Racontez-nous simplement ce qui fait, selon vous, la force de votre entreprise.',question:'De quoi êtes-vous le plus fier concernant votre entreprise ?',help:'Cela peut être un produit, un service, un savoir-faire, la fidélité de vos clients, la réputation de l’entreprise, l’ambiance de travail, une réalisation ou toute autre chose qui compte pour vous.',actionCue:'Appuyez-vous si possible sur une action, une façon de faire ou un exemple réellement vécu dans l’entreprise.',chips:['qualité ou renommée','clients fidèles','savoir-faire','réalisation','réputation','équipe','capacité d’adaptation'],topics:[
+        {id:'clients',title:'Vos clients',prompt:'Qu’est-ce qui fait qu’ils vous choisissent ou qu’ils reviennent ?',hint:'Qualité, réactivité, conseil, proximité, confiance, délais, service après-vente…'},
+        {id:'savoirfaire',title:'Votre savoir-faire',prompt:'Qu’est-ce que votre entreprise sait particulièrement bien faire et ne voudrait surtout pas perdre ?',hint:'Expertise technique, geste métier, méthode, connaissance du terrain, organisation, transmission…'},
+        {id:'preuve',title:'Un exemple concret',prompt:'Si vous deviez montrer une réalisation ou une situation qui représente bien votre entreprise, laquelle choisiriez-vous ?',hint:'Une réalisation, un produit, un chantier, une relation client ou une initiative de l’équipe…'}]},
+      {id:'ressources',title:'Vos ressources et votre environnement',short:'Ressources et environnement',lead:'Parlons de ce que votre activité utilise, de ce qu’elle évite de perdre et de ce qui pourrait l’affecter.',question:'Dans votre activité, qu’essayez-vous d’utiliser au mieux, d’éviter de gaspiller ou de mieux maîtriser ?',help:'Pensez aux matières, à l’eau, aux déchets, aux équipements, à l’énergie, aux déplacements et aux effets possibles de votre activité.',actionCue:'Après le constat, expliquez surtout ce que vous avez déjà changé, commencé à faire ou prévu pour réduire le problème ou vous y adapter.',chips:['matières','eau','déchets','équipements','énergie','déplacements','voisinage','adaptation'],topics:[
+        {id:'matieres',title:'Matières, eau et déchets',prompt:'Avez-vous mis en place des façons de réduire les pertes, de réparer, de réemployer, de trier ou d’économiser l’eau ?',hint:'Réparation, réemploi, chutes, invendus, emballages, tri, eau économisée ou réutilisée…'},
+        {id:'energie',title:'Équipements, énergie et déplacements',prompt:'Avez-vous fait évoluer vos équipements, vos consommations, vos déplacements ou vos livraisons ?',hint:'Équipements moins énergivores, entretien, isolation, tournées, regroupement des livraisons, visioconférence…'},
+        {id:'impacts',title:'Les effets de votre activité',prompt:'Votre activité peut-elle avoir des effets sur l’air, l’eau, les sols, le bruit, les espaces naturels ou le voisinage ?',hint:'Poussières, fumées, bruit, eaux de lavage, stockage, prévention des fuites, espaces naturels proches…'},
+        {id:'climat',title:'Les changements qui pourraient vous affecter',prompt:'Votre entreprise est-elle déjà concernée, ou pourrait-elle l’être, par des restrictions d’eau, des hausses de prix, des ruptures d’approvisionnement ou de fortes chaleurs ? Qu’avez-vous déjà mis en place, commencé ou programmé pour y faire face ?',hint:'Décrivez d’abord la difficulté ou le risque, puis les actions déjà réalisées, en cours ou prévues : réduction des consommations, autre approvisionnement, nouveaux horaires, adaptation des équipements, organisation différente…'}]},
+      {id:'equipe',title:'La vie de votre équipe',short:'Votre équipe',lead:'Regardons comment les personnes arrivent, apprennent, travaillent et peuvent s’exprimer chez vous.',question:'Si une personne venait travailler chez vous demain, que découvrirait-elle de votre manière d’accueillir, de faire progresser et de prendre soin de votre équipe ?',help:'Vous pouvez raconter des pratiques très simples du quotidien. Elles ont souvent davantage de valeur que vous ne le pensez.',actionCue:'Racontez des façons de faire concrètes : ce que vous avez organisé, amélioré, testé ou décidé avec votre équipe.',chips:['accueil','intégration','apprentissage','formation','sécurité','conditions de travail','équité','dialogue'],topics:[
+        {id:'accueil_competences',title:'Arriver, apprendre et transmettre',prompt:'Comment se passent l’accueil d’une nouvelle personne, l’apprentissage du métier et la transmission des savoir-faire ?',hint:'Présentation de l’équipe, intégration, tuteur, apprentissage, formation sur le terrain, habilitations, alternance…'},
+        {id:'conditions',title:'Travailler dans de bonnes conditions',prompt:'Que faites-vous pour la santé, la sécurité et les conditions de travail de votre équipe ?',hint:'Prévention, équipements, ergonomie, horaires, matériel adapté, fatigue, stress, télétravail lorsque pertinent…'},
+        {id:'equite_dialogue',title:'Trouver sa place et pouvoir s’exprimer',prompt:'Comment veillez-vous à ce que chacun soit traité équitablement et puisse faire remonter ses idées ou ses difficultés ?',hint:'Recrutement, handicap, égalité, adaptation d’un poste, échanges directs, réunions, reconnaissance, décisions expliquées…'}]},
+      {id:'relations',title:'Vos relations et votre territoire',short:'Relations et territoire',lead:'Une entreprise vit aussi par les relations qu’elle entretient avec ses partenaires et autour d’elle.',question:'Avec qui votre entreprise travaille-t-elle et qu’est-ce qui compte pour vous dans ces relations ?',help:'Parlez de vos fournisseurs, sous-traitants, partenaires, réseaux et acteurs de votre territoire.',actionCue:'Expliquez vos choix, vos habitudes ou vos règles concrètes : comment vous sélectionnez, protégez la confiance ou contribuez autour de vous.',chips:['fournisseurs','sous-traitants','confiance','confidentialité','écoles','associations','réseaux locaux'],topics:[
+        {id:'achats',title:'Choisir ses fournisseurs et partenaires',prompt:'Au-delà du prix, qu’est-ce qui compte lorsque vous choisissez un fournisseur, un sous-traitant ou un partenaire ?',hint:'Proximité, qualité, fiabilité, délais, origine, conditions de fabrication, réparation, relation durable…'},
+        {id:'confiance',title:'Protéger la confiance',prompt:'Quelles habitudes ou règles protègent la confiance dans vos relations de travail et d’affaires ?',hint:'Confidentialité, données des clients, engagements tenus, informations commerciales, cadeaux, conflits d’intérêts…'},
+        {id:'territoire',title:'Votre place dans le territoire',prompt:'Avec quels acteurs locaux entretenez-vous des liens, et de quelle manière ?',hint:'Écoles, CFA, universités, associations, clubs, CCI, collectivités, ESAT, structures d’insertion, projets locaux…'}]},
+      {id:'progres',title:'Votre manière de progresser',short:'Suivre et progresser',lead:'Voyons maintenant comment certaines pratiques vivent dans le temps et ne restent pas de simples intentions.',question:'Parmi ce que vous venez de raconter, qu’est-ce que vous suivez, discutez régulièrement ou cherchez à améliorer ?',help:'Un suivi très simple peut suffire : un échange, un chiffre, un résultat observé, une personne identifiée ou un objectif.',actionCue:'Indiquez comment vous faites vivre ces actions : qui s’en occupe, ce que vous regardez et ce que vous souhaitez encore améliorer.',chips:['retours clients','consommations','formation','sécurité','objectif','responsable','label'],topics:[
+        {id:'suivi',title:'Ce que vous suivez déjà',prompt:'Utilisez-vous des chiffres, des indicateurs, des retours ou des points réguliers pour suivre certaines pratiques ?',hint:'Vous pouvez indiquer directement un chiffre, une évolution, une fréquence ou un résultat : retours clients, consommations, accidents, formation, qualité, délais…'},
+        {id:'pilotage',title:'Responsabilités et objectifs',prompt:'Certaines pratiques sont-elles confiées à une personne ou associées à un objectif que vous vous êtes fixé ?',hint:'Responsable identifié, objectif interne, engagement écrit, plan d’action, label ou certification déjà obtenu…'}]},
+      {id:'avenir',title:'Votre avenir et quelques repères',short:'Avenir et repères',lead:'Terminons le récit par ce que vous préparez, ce que vous avez surmonté et ce qui permet de bien situer votre entreprise.',question:'Qu’aimeriez-vous encore développer, améliorer ou faire connaître concernant votre entreprise ?',help:'Vous pouvez parler de projets déjà engagés ou simplement envisagés, en les distinguant clairement de ce qui existe déjà.',actionCue:'Distinguez ce qui est déjà en place, ce que vous êtes en train de mettre en œuvre et ce que vous avez réellement prévu pour la suite.',chips:['innovation','investissement','nouveau service','nouveau marché','adaptation','difficulté surmontée','autre pratique'],topics:[
+        {id:'innovation',title:'Innovation et développement',prompt:'Préparez-vous une innovation, un investissement, un nouveau produit, un nouveau service ou un nouveau marché ?',hint:'Précisez ce qui existe déjà, ce qui est en cours et ce qui reste un projet.'},
+        {id:'resilience',title:'Votre capacité d’adaptation',prompt:'Avez-vous récemment surmonté une difficulté importante ou fait évoluer votre manière de travailler ?',hint:'Évolution du marché, difficulté d’approvisionnement, changement technique, demande d’un client, réorganisation…'},
+        {id:'autre',title:'Un dernier tour de mémoire',prompt:'Y a-t-il une pratique, une initiative ou une collaboration importante dont nous n’avons pas encore parlé ?',hint:'Une habitude ancienne, une idée de l’équipe, une amélioration venue du terrain ou quelque chose que vous ne nommez pas RSE…'}]}
+    ];
+
+    const storageKey='apodo_prototype_parcours_7_moments';
+    const companyFields=[
+      {id:'company_name',label:'Nom de l’entreprise',placeholder:'Nom de l’entreprise'},
+      {id:'company_staff',label:'Effectif actuel',placeholder:'Ex. : 18 personnes, ou je travaille seul'},
+      {id:'company_year',label:'Année de création ou ancienneté',placeholder:'Ex. : créée en 2008'},
+      {id:'company_activity',label:'Comment présenteriez-vous votre entreprise à quelqu’un qui ne la connaît pas ?',wide:true,textarea:true},
+      {id:'company_history',label:'Y a-t-il quelque chose d’important à connaître sur son histoire ?',wide:true,textarea:true},
+      {id:'company_revenue',label:'Chiffre d’affaires du dernier exercice ou tranche',placeholder:'Ex. : 1,4 M€, entre 1 et 2 M€, ou non communiqué',optional:true},
+      {id:'company_trend',label:'Évolution récente de l’activité',placeholder:'Ex. : croissance, stabilité, transformation…',optional:true},
+      {id:'company_development',label:'Que souhaitez-vous valoriser concernant le dynamisme de l’entreprise ?',wide:true,textarea:true,optional:true}
+    ];
+    const data={main:{},topics:{},company:{}};
+    let panelIndex=0,recognition=null,activeMic=null;
+
+    function companyPanelIndex(){return moments.length*2}
+    function finalPanelIndex(){return companyPanelIndex()+1}
+    function panelTotal(){return moments.length*2+2}
+    function isCompanyPanel(){return panelIndex===companyPanelIndex()}
+    function isFinalPanel(){return panelIndex===finalPanelIndex()}
+    function momentForPanel(){return (isCompanyPanel()||isFinalPanel())?7:Math.floor(panelIndex/2)+1}
+    function isStory(){return panelIndex<companyPanelIndex()&&panelIndex%2===0}
+
+    function render(){
+      if(isCompanyPanel()){
+        document.getElementById('bar').style.width='92%';
+        document.getElementById('progress').setAttribute('aria-valuenow','92');
+        document.getElementById('momentCount').textContent='REPÈRES SUR VOTRE ENTREPRISE';
+        renderJump(0);renderCompanyPage();return;
+      }
+      const momentNumber=momentForPanel();
+      document.getElementById('bar').style.width=(momentNumber/7*100)+'%';
+      document.getElementById('progress').setAttribute('aria-valuenow',String(Math.round(momentNumber/7*100)));
+      document.getElementById('momentCount').textContent='MOMENT '+momentNumber+' SUR 7';
+      renderJump(momentNumber);
+      if(momentNumber===7){renderFinal();return}
+      const moment=moments[momentNumber-1];
+      document.getElementById('heroEyebrow').textContent='La Méthode APODO · grand moment '+momentNumber;
+      document.getElementById('heroTitle').innerHTML=escapeHtml(moment.title).replace(' de votre entreprise','<br><span> de votre entreprise</span>');
+      document.getElementById('heroLead').textContent=moment.lead;
+      if(isStory())renderStory(moment,momentNumber);else renderReminder(moment,momentNumber);
+      window.scrollTo({top:110,behavior:'smooth'});
+    }
+
+    function renderJump(current){
+      const labels=moments.map(m=>m.short).concat('Dernier regard');
+      document.getElementById('jumpGrid').innerHTML=labels.map((label,i)=>'<button type="button" class="'+(current===i+1?'current':'')+'" '+(current===i+1?'aria-current="step" ':'')+'onclick="jumpTo('+(i+1)+')">'+(i+1)+' · '+escapeHtml(label)+'</button>').join('');
+    }
+
+    function renderStory(moment,n){
+      document.getElementById('app').innerHTML='<section><div class="panel-head"><div><div class="eyebrow">Racontez librement</div><h2>Partons de votre expérience.</h2></div><span class="substep">Première partie</span></div><div class="card main-card"><p class="invite" id="main_prompt_'+moment.id+'">'+escapeHtml(moment.question)+'</p><p class="help">'+escapeHtml(moment.help)+'</p>'+(n===1?actionGuide():'')+'<div class="action-cue"><b>À garder en tête :</b> '+escapeHtml(moment.actionCue)+'</div><label class="sr-only" for="main_'+moment.id+'">Votre récit pour '+escapeHtml(moment.title)+'</label><textarea class="answer" id="main_'+moment.id+'" aria-describedby="main_prompt_'+moment.id+'" placeholder="Racontez-nous avec vos mots…"></textarea>'+voiceRow('main_'+moment.id,'Dicter ma réponse',true)+'<details class="memory"><summary>Quelques pistes pour ne rien oublier</summary><div class="chips">'+moment.chips.map(c=>'<span class="chip">'+escapeHtml(c)+'</span>').join('')+'</div></details></div><div class="actions"><button type="button" class="btn ghost" onclick="previous()">Retour</button><button type="button" class="btn" onclick="next()">Continuer</button></div></section>';
+      const field=document.getElementById('main_'+moment.id);field.value=data.main[moment.id]||'';field.addEventListener('input',()=>{data.main[moment.id]=field.value;save()});
+    }
+
+    function actionGuide(){
+      return '<div class="action-guide"><h3>Ce que nous cherchons surtout</h3><p>Les constats et les difficultés sont utiles. Mais ce qui donnera le plus de valeur à votre rapport, ce sont vos actions et vos bonnes pratiques concrètes.</p><div class="action-steps"><div class="action-step"><b>Déjà en place</b>Ce que vous faites aujourd’hui.</div><div class="action-step"><b>En cours</b>Ce que vous avez commencé à mettre en œuvre.</div><div class="action-step"><b>Prévu</b>Ce que vous avez réellement décidé ou programmé.</div></div></div>';
+    }
+
+    function renderReminder(moment,n){
+      let html='<section><div class="panel-head"><div><div class="eyebrow">Pour être sûr de ne rien oublier</div><h2>Souhaitez-vous préciser l’un de ces points&nbsp;?</h2><p class="help">Indiquez simplement si le point figure déjà dans votre récit, si vous souhaitez ajouter quelque chose ou si vous préférez passer. Vous pouvez aussi répondre directement à l’oral avec le bouton micro de chaque rappel.</p></div><span class="substep">Deuxième partie</span></div><div class="action-cue"><b>Pour ces rappels :</b> '+escapeHtml(moment.actionCue)+'</div><div class="checks">';
+      moment.topics.forEach(topic=>html+=topicCard(topic));html+='</div>';
+      html+='<div class="actions"><button type="button" class="btn ghost" onclick="previous()">Retour</button><button type="button" class="btn" onclick="next()">'+(n===6?'Renseigner les repères de l’entreprise':'Passer au moment suivant')+'</button></div></section>';
+      document.getElementById('app').innerHTML=html;
+      moment.topics.forEach(restoreTopic);
+    }
+
+    function topicCard(topic){
+      return '<article class="check-card" data-topic="'+topic.id+'"><h3 id="topic_heading_'+topic.id+'">'+escapeHtml(topic.title)+'</h3><p id="topic_prompt_'+topic.id+'">'+escapeHtml(topic.prompt)+'</p><div class="choice-row"><button type="button" class="choice" aria-pressed="false" data-value="covered" onclick="choose(this,\'covered\')">J’en ai déjà parlé</button><button type="button" class="choice" aria-pressed="false" data-value="add" onclick="choose(this,\'add\')">Je souhaite préciser</button><button type="button" class="choice" aria-pressed="false" data-value="skip" onclick="choose(this,\'skip\')">Je préfère passer</button></div><div class="addition"><label class="sr-only" for="topic_'+topic.id+'">Précision pour '+escapeHtml(topic.title)+'</label><textarea class="answer small" id="topic_'+topic.id+'" aria-describedby="topic_prompt_'+topic.id+'" placeholder="'+escapeAttr(topic.hint)+'"></textarea>'+voiceRow('topic_'+topic.id,'Dicter une précision',false)+'</div><button type="button" class="mic voice-direct" aria-label="Répondre à l’oral : '+escapeAttr(topic.title)+'" onclick="voiceTopic(this)"><span aria-hidden="true">🎙️</span><span>Répondre à l’oral</span></button></article>';
+    }
+
+    function voiceRow(target,label,withPrivacy){
+      return '<div class="voice-row"><button type="button" class="mic" aria-pressed="false" data-target="'+target+'" data-label="'+escapeAttr(label)+'" onclick="toggleVoice(this)"><span aria-hidden="true">🎙️</span><span>'+escapeHtml(label)+'</span></button>'+(withPrivacy?'<span class="privacy">La dictée utilise la fonction vocale de votre navigateur. APODO n’enregistre ni ne conserve votre voix.</span>':'')+'</div>';
+    }
+
+    function choose(button,status){
+      const card=button.closest('.check-card'),topic=card.dataset.topic;
+      data.topics[topic]=data.topics[topic]||{};data.topics[topic].status=status;
+      card.querySelectorAll('.choice').forEach(b=>{const selected=b===button;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected))});
+      card.querySelector('.addition').classList.toggle('open',status==='add');save();
+    }
+
+    function voiceTopic(button){
+      const card=button.closest('.check-card'),add=card.querySelector('[data-value="add"]');
+      choose(add,'add');
+      const mic=card.querySelector('.addition .mic');
+      if(mic)toggleVoice(mic);
+    }
+
+    function restoreTopic(topic){
+      const state=data.topics[topic.id]||{},card=document.querySelector('[data-topic="'+topic.id+'"]');
+      if(state.status){const b=card.querySelector('[data-value="'+state.status+'"]');if(b){b.classList.add('selected');b.setAttribute('aria-pressed','true')}card.querySelector('.addition').classList.toggle('open',state.status==='add')}
+      const area=document.getElementById('topic_'+topic.id);area.value=state.text||'';area.addEventListener('input',()=>{data.topics[topic.id]=data.topics[topic.id]||{};data.topics[topic.id].text=area.value;save()});
+    }
+
+    function companyBlock(){
+      let html='<section class="company"><h3>Quelques repères sur votre entreprise</h3><p class="help">Ces éléments sont demandés après le récit afin de replacer vos pratiques dans leur contexte.</p><div class="company-grid">';
+      companyFields.forEach((f,i)=>{if(i===5)html+='<div class="wide optional"><h3>Repères économiques et de développement <span class="help">(facultatif)</span></h3><p class="help">Un chiffre exact n’est pas obligatoire : une tranche, une évolution ou une explication peuvent suffire.</p></div>';html+='<div class="'+(f.wide?'wide':'')+'"><label for="'+f.id+'">'+escapeHtml(f.label)+(f.optional?' <span class="help">(facultatif)</span>':'')+'</label>'+(f.textarea?'<textarea id="'+f.id+'" placeholder="'+escapeAttr(f.placeholder||'')+'"></textarea>'+voiceRow(f.id,'Dicter cette réponse',false):'<input id="'+f.id+'" placeholder="'+escapeAttr(f.placeholder||'')+'">')+'</div>'});
+      return html+'</div></section>';
+    }
+
+    function renderCompanyPage(){
+      document.getElementById('heroEyebrow').textContent='La Méthode APODO · page complémentaire';
+      document.getElementById('heroTitle').innerHTML='Quelques repères<br><span>sur votre entreprise.</span>';
+      document.getElementById('heroLead').textContent='Cette page est distincte des grands moments de récit. Elle permet simplement de situer votre entreprise et de préparer la présentation du rapport.';
+      document.getElementById('app').innerHTML='<section><div class="panel-head"><div><div class="eyebrow">Pour situer votre récit</div><h2>Présentez-nous brièvement votre entreprise.</h2><p class="help">Les informations économiques sont facultatives. Elles ne seront utilisées dans le rapport qu’avec votre accord.</p></div><span class="substep">Page complémentaire</span></div>'+companyBlock()+'<div class="actions"><button type="button" class="btn ghost" onclick="previous()">Retour</button><button type="button" class="btn" onclick="next()">Voir le dernier regard</button></div></section>';
+      restoreCompany();window.scrollTo({top:110,behavior:'smooth'});
+    }
+
+    function restoreCompany(){companyFields.forEach(f=>{const e=document.getElementById(f.id);e.value=data.company[f.id]||'';e.addEventListener('input',()=>{data.company[f.id]=e.value;save()})})}
+
+    function renderFinal(){
+      document.getElementById('heroEyebrow').textContent='La Méthode APODO · dernier regard';
+      document.getElementById('heroTitle').innerHTML='Votre entreprise,<br><span>avec vos mots.</span>';
+      document.getElementById('heroLead').textContent='Relisez la matière que vous avez partagée, complétez les points laissés en attente et vérifiez qu’elle vous ressemble.';
+      const missing=[];moments.forEach((m,mi)=>m.topics.forEach(t=>{if(!(data.topics[t.id]||{}).status)missing.push({label:t.title,panel:mi*2+1})}));
+      let html='<section><div class="panel-head"><div><div class="eyebrow">Un dernier regard</div><h2>Est-ce que cette matière vous ressemble&nbsp;?</h2><p class="help">Cette synthèse reprend uniquement vos propres réponses. Elle ne constitue ni une évaluation ni une restitution APODO.</p></div><span class="substep">Moment 7</span></div>';
+      html+='<div class="action-cue"><b>Avant de terminer :</b> vérifiez que vous avez bien raconté, lorsque c’était pertinent, les actions déjà en place, celles que vous avez commencées et celles que vous avez réellement programmées.</div>';
+      html+='<div class="coverage"><b>'+ (missing.length?missing.length+' point'+(missing.length>1?'s':'')+' encore sans choix.':'Tous les rappels ont été parcourus.')+'</b>'+(missing.length?'<p class="help">Vous pouvez y revenir ou décider de les laisser de côté.</p><div class="missing-list">'+missing.map(x=>'<button type="button" class="missing-link" onclick="goPanel('+x.panel+')">'+escapeHtml(x.label)+'</button>').join('')+'</div>':'')+'</div>';
+      moments.forEach(m=>{html+='<div class="summary-group"><h3>'+escapeHtml(m.title)+'</h3><div class="summary"><div class="summary-item wide"><small>Votre récit</small><p class="'+(!(data.main[m.id]||'').trim()?'empty':'')+'">'+escapeHtml((data.main[m.id]||'').trim()||'Aucun récit saisi pour ce moment.')+'</p></div>';m.topics.forEach(t=>html+=summaryTopic(t));html+='</div></div>'});
+      const companyValues=companyFields.filter(f=>(data.company[f.id]||'').trim());if(companyValues.length){html+='<div class="summary-group"><h3>Quelques repères sur votre entreprise</h3><div class="summary">'+companyValues.map(f=>'<div class="summary-item"><small>'+escapeHtml(f.label)+'</small><p>'+escapeHtml(data.company[f.id])+'</p></div>').join('')+'</div></div>'}
+      html+='<div class="notice"><b>Rien n’est transmis automatiquement.</b> Relisez votre matière, téléchargez votre fichier, puis choisissez vous-même de poursuivre avec APODO.</div><div class="finish final-actions"><button type="button" class="btn ghost" onclick="goPanel(0)">Reprendre depuis le début</button><button type="button" class="btn ghost" onclick="downloadWord()">Télécharger mes éléments</button><a class="btn" href="transmettre.html">Transmettre mes éléments à APODO</a></div><button type="button" class="reset" onclick="resetPrototype()">Effacer mes réponses et recommencer</button></section>';
+      document.getElementById('app').innerHTML=html;window.scrollTo({top:110,behavior:'smooth'});
+    }
+
+    function summaryTopic(topic){
+      const state=data.topics[topic.id]||{};let text='Aucun choix effectué.';
+      if(state.status==='covered')text='Vous avez indiqué que ce point figure déjà dans votre récit.';
+      if(state.status==='skip')text='Vous avez choisi de passer ce point.';
+      if(state.status==='add')text=(state.text||'').trim()||'Aucune précision saisie.';
+      return '<div class="summary-item"><small>'+escapeHtml(topic.title)+'</small><p class="'+((!state.status||!state.text&&state.status==='add')?'empty':'')+'">'+escapeHtml(text)+'</p></div>';
+    }
+
+    function next(){save();panelIndex=Math.min(panelTotal()-1,panelIndex+1);render()}
+    function previous(){save();panelIndex=Math.max(0,panelIndex-1);render()}
+    function goPanel(index){save();panelIndex=index;render()}
+    function jumpTo(moment){goPanel(moment===7?panelTotal()-1:(moment-1)*2);document.querySelector('.jump').open=false}
+
+    function save(){localStorage.setItem(storageKey,JSON.stringify(data))}
+    function load(){try{const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');Object.assign(data.main,saved.main||{});Object.assign(data.topics,saved.topics||{});Object.assign(data.company,saved.company||{})}catch(e){}}
+    function resetPrototype(){if(confirm('Effacer toutes les réponses enregistrées dans ce parcours ?')){localStorage.removeItem(storageKey);location.reload()}}
+
+    function toggleVoice(button){
+      const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+      if(!SpeechRecognition){alert('La dictée vocale n’est pas disponible dans ce navigateur. Vous pouvez utiliser la dictée habituelle de votre appareil ou saisir votre réponse au clavier.');return}
+      if(recognition&&activeMic===button){recognition.stop();return}if(recognition)recognition.stop();
+      const target=document.getElementById(button.dataset.target);recognition=new SpeechRecognition();recognition.lang='fr-FR';recognition.continuous=true;recognition.interimResults=false;activeMic=button;button.classList.add('listening');button.setAttribute('aria-pressed','true');button.querySelector('span:last-child').textContent='Arrêter la dictée';
+      recognition.onresult=event=>{let text='';for(let i=event.resultIndex;i<event.results.length;i++)text+=event.results[i][0].transcript;target.value+=(target.value.trim()?' ':'')+text.trim();target.dispatchEvent(new Event('input'))};recognition.onerror=stopVoice;recognition.onend=stopVoice;recognition.start();
+    }
+    function stopVoice(){if(activeMic){activeMic.classList.remove('listening');activeMic.setAttribute('aria-pressed','false');activeMic.querySelector('span:last-child').textContent=activeMic.dataset.label}recognition=null;activeMic=null}
+
+    function rtfEsc(s){s=String(s||'').replace(/\\/g,'\\\\').replace(/{/g,'\\{').replace(/}/g,'\\}');let o='';for(const ch of s){const c=ch.charCodeAt(0);if(ch==='\n')o+='\\par ';else if(c>127)o+='\\u'+(c>32767?c-65536:c)+'?';else o+=ch}return o}
+    function downloadWord(){
+      let x='{\\rtf1\\ansi\\ansicpg1252\\deff0\\uc1{\\fonttbl{\\f0 Calibri;}}\\f0\\fs22\\sa140 ',add=s=>x+=rtfEsc(s),para=()=>x+='\\par ';
+      x+='\\b\\fs36 ';add('Méthode APODO - éléments partagés');x+='\\b0\\fs22';para();add('Document issu du parcours guidé en sept temps. Il reprend les informations saisies par l’entreprise et constitue une matière de travail qui sera ensuite relue et mise en forme avec APODO.');para();
+      moments.forEach(m=>{para();x+='\\b\\fs27 ';add(m.title);x+='\\b0\\fs22';para();const main=(data.main[m.id]||'').trim();if(main){add(main);para()}m.topics.forEach(t=>{const s=data.topics[t.id]||{};if(s.status==='add'&&(s.text||'').trim()){x+='\\b ';add(t.title+' : ');x+='\\b0 ';add(s.text);para()}})});
+      const c=companyFields.filter(f=>(data.company[f.id]||'').trim());if(c.length){para();x+='\\b\\fs27 ';add('Quelques repères sur l’entreprise');x+='\\b0\\fs22';para();c.forEach(f=>{x+='\\b ';add(f.label+' : ');x+='\\b0 ';add(data.company[f.id]);para()})}x+='}';
+      const blob=new Blob([x],{type:'application/rtf'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='APODO_elements_parcours_7_moments.rtf';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
+    }
+
+    function escapeHtml(text){return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+    function escapeAttr(text){return escapeHtml(text).replace(/'/g,'&#39;')}
+    load();render();
+  </script>
+<script src="assets/site.js"></script></body>
+</html>

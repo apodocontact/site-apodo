@@ -1,0 +1,32 @@
+{
+  "name": "APODO site révisé",
+  "version": "2026-09-19-audit-v1",
+  "entry": "index.html",
+  "files": [
+    "README.txt",
+    "adhesion.html",
+    "assets/site.js",
+    "assets/style.css",
+    "assets/transmission.js",
+    "association.html",
+    "blog-l-alternance-l-engagement-social-qu-on-oublie-de-valoriser.html",
+    "blog-optimiser-ses-tournees-un-geste-rse-qui-fait-aussi-baisser-la-facture-carburant.html",
+    "blog-renovation-energetique-des-locaux-des-aides-mobilisables-un-double-benefice.html",
+    "blog-rse-et-assurance-un-levier-reel-mais-a-ne-pas-survendre.html",
+    "blog-rse-et-fidelisation-client-un-argument-commercial-meme-sans-appel-d-offres.html",
+    "blog-sobriete-numerique-le-chapitre-rse-le-plus-facile-a-documenter.html",
+    "blog-transmission-d-entreprise-pourquoi-un-repreneur-regarde-la-rse-avant-de-racheter.html",
+    "blog-vos-clients-vous-envoient-deja-un-questionnaire-rse-sans-que-vous-y-ayez-pense.html",
+    "blog.html",
+    "comprendre.html",
+    "confidentialite.html",
+    "confier.html",
+    "index.html",
+    "manifest.json",
+    "methode.html",
+    "parcours.html",
+    "ressources.html",
+    "supports.html",
+    "transmettre.html"
+  ]
+}
