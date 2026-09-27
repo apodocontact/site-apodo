@@ -1,6 +1,12 @@
 (function () {
   const button = document.querySelector('.menu-toggle');
   const menu = document.getElementById('site-menu');
+  if (menu && !menu.querySelector('a[href="#contact"], a[href="index.html#contact"]')) {
+    const contactLink = document.createElement('a');
+    contactLink.href = 'index.html#contact';
+    contactLink.textContent = 'Contact';
+    menu.insertBefore(contactLink, menu.querySelector('.mobile-cta'));
+  }
   if (button && menu) {
     const buttonLabel = button.querySelector('.sr-only');
     const close = () => {
