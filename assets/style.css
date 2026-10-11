@@ -220,6 +220,7 @@ h3{font-size:21px;line-height:1.25}
 .status-panel strong{display:block;font-size:19px;margin-bottom:6px}
 .status-good{border-left:4px solid var(--green)}
 .status-empty{border-left:4px solid #d29a54}
+.file-import{display:block;width:100%;border:1px dashed #9ab2ad;border-radius:12px;padding:10px;background:#f8fbfa;color:var(--ink)}
 .action-list{counter-reset:apodo;display:grid;gap:16px;margin-top:28px}
 .action-list .tile{position:relative;padding-left:74px}
 .action-list .tile:before{counter-increment:apodo;content:counter(apodo);position:absolute;left:22px;top:21px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--teal);font-weight:900}
