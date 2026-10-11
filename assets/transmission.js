@@ -1,5 +1,6 @@
 (function () {
   const storageKey = 'apodo_prototype_parcours_7_moments';
+  const draftVersion = 1;
   const structure = [
     { id: 'valeur', title: 'Ce qui fait la valeur de votre entreprise', topics: [['clients', 'Vos clients'], ['savoirfaire', 'Votre savoir-faire'], ['preuve', 'Un exemple concret']] },
     { id: 'ressources', title: 'Vos ressources et votre environnement', topics: [['matieres', 'Matières, eau et déchets'], ['energie', 'Équipements, énergie et déplacements'], ['impacts', 'Les effets de votre activité'], ['climat', 'Les changements qui pourraient vous affecter']] },
@@ -25,6 +26,10 @@
     } catch (_) {
       return {};
     }
+  }
+
+  function saveData(data) {
+    localStorage.setItem(storageKey, JSON.stringify({ ...data, savedAt: new Date().toISOString() }));
   }
 
   function hasContent(data) {
@@ -86,9 +91,58 @@
     setTimeout(() => URL.revokeObjectURL(url), 1500);
   }
 
+  function downloadDraft() {
+    const data = loadData();
+    if (!hasContent(data)) {
+      window.alert('Aucun élément n’a encore été enregistré sur cet appareil. Commencez ou reprenez le parcours guidé.');
+      return;
+    }
+    saveData(data);
+    const company = data.company || {};
+    const payload = { type: 'apodo-parcours-brouillon', version: draftVersion, exportedAt: new Date().toISOString(), data };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const companyName = String(company.company_name || 'Entreprise').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9_-]+/g, '_');
+    link.href = url;
+    link.download = `APODO_brouillon_reprise_${companyName || 'Entreprise'}.json`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+
+  function bindDraftImport() {
+    const input = document.getElementById('draftImport');
+    if (!input) return;
+    input.addEventListener('change', (event) => {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const payload = JSON.parse(String(reader.result || '{}'));
+          const imported = payload.type === 'apodo-parcours-brouillon' ? payload.data : payload;
+          if (!imported || typeof imported !== 'object') throw new Error('invalid');
+          saveData({
+            main: imported.main || {},
+            topics: imported.topics || {},
+            company: imported.company || {}
+          });
+          window.alert('Votre brouillon APODO a été réimporté. Le parcours va se rouvrir avec vos réponses.');
+          window.location.href = 'parcours.html';
+        } catch (_) {
+          window.alert('Ce fichier ne semble pas être un brouillon APODO valide.');
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+
   const data = loadData();
   const status = document.getElementById('draftStatus');
   const button = document.getElementById('downloadTransmission');
+  const draftButton = document.getElementById('downloadDraft');
   if (status) {
     if (hasContent(data)) {
       status.classList.add('status-good');
@@ -99,4 +153,6 @@
     }
   }
   if (button) button.addEventListener('click', download);
+  if (draftButton) draftButton.addEventListener('click', downloadDraft);
+  bindDraftImport();
 })();
